@@ -28,6 +28,8 @@ function game() {
     } else {
         alert("No one wins today...")
     }
+console.log("Game over!")
+playAgain();
 
 }
 
@@ -77,7 +79,18 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-
+//replay game if player types 'y':
+function playAgain() {
+    let askReplay = prompt("Would you like to play again? Y/N: ").toLowerCase();
+    if (askReplay === 'y') {
+        game();
+    } else if (askReplay === 'n') {
+        alert("Thanks for playing - BYE!");
+    } else {
+        alert("Sorry, that is an incorrect key - type 'Y/N'");
+        playAgain();
+    }
+} 
 
 
 
