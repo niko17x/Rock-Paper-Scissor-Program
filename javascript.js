@@ -34,8 +34,14 @@ function game() {
 //get players move:    
 function playerPlay() {
     let playerSelection = prompt("Choose rock (r), paper (p) or scissor (s)!").toLowerCase();
-    return playerSelection;
+    if (playerSelection === 'r' || playerSelection === 'p' || playerSelection === 's') {
+        return playerSelection;
+    } else {
+        alert("That is not a valid input. Please try again.");
+    }
+    playerPlay();
 }
+//console.log(playerPlay())
 
 
 
