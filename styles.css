@@ -1,0 +1,30 @@
+* {
+    background-color: #FFEA00;
+}
+
+img {
+    height: 200px;
+    width: 200px;
+    border: 1px solid black;
+}
+
+.container-player {
+    display: flex;
+    justify-content: space-around;
+}
+
+.container-vs {
+    display: flex;
+    justify-content: center;
+
+}
+
+.container-bot {
+    display: flex;
+    justify-content: space-around;
+
+}
+
+h1 {
+    border: 1px solid black;
+}
