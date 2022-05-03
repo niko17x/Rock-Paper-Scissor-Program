@@ -95,5 +95,5 @@ function playAgain() {
 
 
 
-game();
+//game();
 
