@@ -1,3 +1,7 @@
+// selecting images from html file to display on webpage:
+const rock = document.querySelector('img .rock');
+const paper = document.querySelector('img .paper');
+const scissor = document.querySelector('img .scissor');
 
 //variables to hold the available moves:
 let availMoves = ['r', 'p', 's'];
