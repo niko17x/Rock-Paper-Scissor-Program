@@ -1,10 +1,23 @@
 // selecting images from html file to display on webpage:
-const rock = document.querySelector('img .rock');
-const paper = document.querySelector('img .paper');
-const scissor = document.querySelector('img .scissor');
+const rock = document.getElementById('rock').src = 'images/rock.png';
+const paper = document.getElementById('paper').src = 'images/paper.png';
+const scissor = document.getElementById('scissor').src = 'images/scissor.png';
+
+
+/**
+ * figure out how to select random images and display it on the page.
+ * find out how to use queryselector to target each image.
+ * put the images into an array so you can use the random function.
+ * the images should then dynamically change based on the random image chosen.
+ */
+
+
 
 //variables to hold the available moves:
-let availMoves = ['r', 'p', 's'];
+//let availMoves = ['r', 'p', 's'];
+let availMoves = [rock, paper, scissor];
+
+
 
 //variable to count the number of wins for the player:
 let playerWins = 0;
@@ -54,10 +67,12 @@ function playerPlay() {
 //get the computer's random move:
 function computerPlay() {
     let randomMove = availMoves[Math.floor(Math.random()*availMoves.length)];
+    console.log(randomMove);
+    document.getElementById('bot-img').src = randomMove;
     return randomMove;
 }
-//console.log(computerPlay())
-
+console.log(computerPlay())
+//computerPlay();
 
 
 
@@ -95,7 +110,6 @@ function playAgain() {
         playAgain();
     }
 } 
-
 
 
 
