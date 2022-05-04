@@ -1,21 +1,20 @@
-// selecting images from html file to display on webpage:
-const rock = document.getElementById('rock').src = 'images/rock.png';
-const paper = document.getElementById('paper').src = 'images/paper.png';
-const scissor = document.getElementById('scissor').src = 'images/scissor.png';
+// variables used to target the specific image element:
+const rock = document.querySelector('img#rock');
+const paper = document.querySelector('img#paper');
+const scissor = document.querySelector('img#scissor');
+
+// variables used to store the images to display on webpage:
+const rockImg = document.getElementById('rock').src='images/rock.png';
+const paperImg = document.getElementById('paper').src='images/paper.png';
+const scissorImg = document.getElementById('scissor').src='images/scissor.png';
 
 
-/**
- * figure out how to select random images and display it on the page.
- * find out how to use queryselector to target each image.
- * put the images into an array so you can use the random function.
- * the images should then dynamically change based on the random image chosen.
- */
 
+// player must be able to click on one of the images and return a value to be able to compare with the bot move.
 
 
 //variables to hold the available moves:
-//let availMoves = ['r', 'p', 's'];
-let availMoves = [rock, paper, scissor];
+let availMoves = [rockImg, paperImg, scissorImg];
 
 
 
@@ -51,28 +50,66 @@ playAgain();
 }
 
 //get players move:    
-function playerPlay() {
-    let playerSelection = prompt("Choose rock (r), paper (p) or scissor (s)!").toLowerCase();
-    if (playerSelection === 'r' || playerSelection === 'p' || playerSelection === 's') {
-        return playerSelection;
-    } else {
-        alert("That is not a valid input. Please try again.");
-    }
-    playerPlay();
+// function playerPlay() {
+//     let playerSelection = prompt("Choose rock (r), paper (p) or scissor (s)!").toLowerCase();
+//     if (playerSelection === 'r' || playerSelection === 'p' || playerSelection === 's') {
+//         return playerSelection;
+//     } else {
+//         alert("That is not a valid input. Please try again.");
+//     }
+//     playerPlay();
+// }
+
+// returns the corresponding letter based on the image clicked:
+function playerChoice() {
+    rock.addEventListener('click', () => {
+        //console.log('r');
+        return 'r';
+    })
+    paper.addEventListener('click', () => {
+        //console.log('p');
+        return 'p';
+    })
+    scissor.addEventListener('click', () => {
+        //console.log('s');
+        return 's';
+    })
 }
-//console.log(playerPlay())
+
+
+
+//function that compares the return value of the image clicked and the random bot play:
+function playerPlay() {
+    if (playerChoice === 'r' || playerChoice === 'p' || playerChoice === 's') {
+        return playerChoice;
+    } else {
+        console.log("That is not a valid input. Please try again.");
+    }
+    playerPlay(); //keeps running this function until valid input from player.
+}
+
+
 
 
 
 //get the computer's random move:
 function computerPlay() {
     let randomMove = availMoves[Math.floor(Math.random()*availMoves.length)];
-    console.log(randomMove);
-    document.getElementById('bot-img').src = randomMove;
-    return randomMove;
+    document.getElementById('bot-img').src = randomMove; //replace filler image in html with random image.
+    if (randomMove === rockImg) {
+        console.log('r');
+        return 'r';
+    } else if (randomMove === paperImg) {
+        console.log('p');
+        return 'p';
+    } else if (randomMove === scissorImg) {
+        console.log('s');
+        return 's';
+    }
+    //return randomMove;
 }
-console.log(computerPlay())
-//computerPlay();
+//console.log(computerPlay())
+computerPlay();
 
 
 
