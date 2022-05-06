@@ -7,7 +7,9 @@
         <script src="javascript.js" defer></script>
     </head>
     <body>
-        <header>Rock, Paper, Scissor</header>
+        <div class="display-text">
+            Choose - Rock, Paper or Scissors?
+        </div>
 
         <div class="container-player">
             <div class="player">
@@ -16,17 +18,25 @@
                 <img id="scissor" src="images/scissor.png">
             </div>
         </div>
+
         <div class="container-vs">
+            <p>Wins: <span id="win-score">0</span></p>
             <img class="vs" src="images/vs.png">    
+            <p>Loses: <span id="lose-score">0</span></p>
         </div>
+
         <div class="container-bot">
             <div class="bot"> 
-                <img id="bot-img" src="#">
+                <img id="bot-img" src="images/robot.png">
             <div class="score">
             </div>
-
-            <h3>Win - Loss Counter:</h1>
         </div>
-        
+
     </body>
 </html> 
+
+
+
+
+
+

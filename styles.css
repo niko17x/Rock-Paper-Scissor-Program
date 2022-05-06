@@ -1,11 +1,22 @@
 * {
     background-color: #FFEA00;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.display-text {
+    text-align: center;
+    font-size: 35px;
+    font-weight: bold;
+    padding: 15px 0;
 }
 
 img {
-    height: 200px;
-    width: 200px;
-    border: 1px solid black;
+    height: 150px;
+    width: 150px;
+    padding: 10px;
+
 }
 
 .container-player {
@@ -15,7 +26,19 @@ img {
 
 .container-vs {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+p {
+    font-size: 25px;
+}
+
+#win-score {
+
+}
+
+#lose-score {
 
 }
 
@@ -27,4 +50,10 @@ img {
 
 h1 {
     border: 1px solid black;
+}
+
+.player img:hover { /*Makes the image grow upon focus.*/
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    transform: scale(1.1);
 }
