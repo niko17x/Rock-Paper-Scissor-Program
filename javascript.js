@@ -19,7 +19,6 @@ const winScore = document.querySelector('#win-score');
 const loseScore = document.querySelector('#lose-score');
 
 
-
 //variables to hold the available moves:
 let availMoves = [rockImg, paperImg, scissorImg];
 //variable to count the number of wins for the player:
@@ -35,43 +34,49 @@ let tieRound = 0;
 
 //FUNCTION BELOW:
 
-
+// main function for game play:
 function main() {
     playerChoice();
-    // if (wins === 'game over' || lose === 'game over') {
-    //     playAgain();
-    // }
-
 }
 
 main();
 
-// function that converts r, p, s to rock, paper, scissors for better readability during gameplay:
+
+// function that converts input value of: r, p, s to rock, paper, scissors for better readability:
 function convertLetters(letter) {
     if (letter === 'r') return 'Rock';
     if (letter === 'p') return 'Paper';
     if (letter === 's') return 'Scissor';
 }
 
-// win/loss:
+// function with output when player wins:
 function wins(userChoice, computerChoice) {
     playerWins++;
     winScore.innerHTML = playerWins;
-    text.textContent = convertLetters(userChoice) + ' beats ' + convertLetters(computerChoice) + " - Winner!"
+    text.textContent = convertLetters(userChoice) + ' beats ' + convertLetters(computerChoice) + " - Winner!";
+    if (playerWins === 10) {
+        text.textContent = "Player is the first to 10 wins!"
+    }
+    
 }
 
+// function with output when player loses:
 function lose(userChoice, computerChoice) {
     computerWins++;
     loseScore.innerHTML = `${computerWins}`;
-    text.textContent = convertLetters(userChoice) + ' loses to ' + convertLetters(computerChoice) + " - Loser!"
+    text.textContent = convertLetters(userChoice) + ' loses to ' + convertLetters(computerChoice) + " - Loser!";
+    if (computerWins === 10) {
+        text.textContent = "Computer is the first to 10 wins!"
+    }
 }
 
-function tie(userChoice, computerChoice) {
+// function with output when player ties with computer:
+function tie(computerChoice) {
     tieRound++;
-    text.textContent = "You both chose " + convertLetters(computerChoice) + " - it's a tie!"
+    text.textContent = "You both chose " + convertLetters(computerChoice) + " - it's a tie!";
 }
 
-// function that determines win, loss or tie of game:
+// function that outputs players move and computer generated random move:
 function game(userChoice) {
     const computerChoice = computerPlay();
     switch(userChoice + computerChoice) {
@@ -94,9 +99,7 @@ function game(userChoice) {
 }
 
 
-
-// returns the corresponding letter based on the image clicked:
-// function should ask for player which image to click.
+// function that takes user input with event listener when image of paper, rock, scissor is clicked:
 function playerChoice() {
     rock.addEventListener('click', () => {
         game('r');
@@ -110,11 +113,11 @@ function playerChoice() {
 }
 
 
-//get the computer's random move:
+// function that returns 'r', 's' or 'p' through Math.random function:
 function computerPlay() {
     let randomMove = availMoves[Math.floor(Math.random()*availMoves.length)]; // returns 0, 1 or 2.
     document.getElementById('bot-img').src = randomMove; //replace filler image in html with random image.
-    if (randomMove === rockImg) {
+    if (randomMove === rockImg) { // 'rockImg' is the variable that holds the image.
         console.log('r');
         return 'r';
     } else if (randomMove === paperImg) {
@@ -124,15 +127,9 @@ function computerPlay() {
         console.log('s');
         return 's';
     }
-    //return randomMove;
 }
-//computerPlay();
 
-
-
-
-
-//replay game if player types 'y':
+// function that accepts user input for game replay:
 function playAgain() {
     let askReplay = prompt("Would you like to play again? Y/N: ").toLowerCase();
     if (askReplay === 'y') {
